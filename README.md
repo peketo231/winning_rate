@@ -18,3 +18,6 @@
 
 ### マーケット
 ウイニングイレブンを一年以上プレイしているユーザー
+
+## 画面遷移図
+https://www.figma.com/file/8Mq0dWcs91Oo1H65367K9N/Winning_Rate?node-id=0%3A1
