@@ -23,4 +23,4 @@
 https://www.figma.com/file/8Mq0dWcs91Oo1H65367K9N/Winning_Rate?node-id=0%3A1
 
 ## ER図
-https://i.gyazo.com/e44fc352c43effc96750fc5a0d8ce93e.png
+https://i.gyazo.com/ac92a9af6491daafdbc9b05138e9c4bb.png
