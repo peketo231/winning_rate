@@ -1,4 +1,4 @@
-inherit_from: .rubocop_todo.yml
+# This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
 
 AllCops:
   Exclude:
