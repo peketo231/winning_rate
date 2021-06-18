@@ -12,9 +12,9 @@
 
   <body>
     <% if logged_in? %>
-      <%= current_user.email %>としてログイン中 |
-      <%= link_to 'ログアウト', logout_path, method: :delete %>
+      <%= render 'shared/header' %>
     <% end %>
     <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
