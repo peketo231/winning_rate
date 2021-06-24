@@ -1,0 +1,25 @@
+.top-wrapper {
+    height: 100vh;
+    position: relative;
+
+    .top-inner-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+
+        h1 {
+            font-size: 3.75rem;
+        }
+
+        p {
+            margin-bottom: 5rem;
+            font-size: 1.25rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 7.5rem;
+        }
+    }
+}
