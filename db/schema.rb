@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_082413) do
+ActiveRecord::Schema.define(version: 2021_06_25_083853) do
+
+  create_table "battle_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "rate", null: false
+    t.float "win_rate"
+    t.bigint "user_id", null: false
+    t.bigint "winning_eleven_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_battle_records_on_user_id"
+    t.index ["winning_eleven_id"], name: "index_battle_records_on_winning_eleven_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", null: false
@@ -21,4 +32,13 @@ ActiveRecord::Schema.define(version: 2021_05_25_082413) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "winning_elevens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "series_status", default: 0, null: false
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "battle_records", "users"
+  add_foreign_key "battle_records", "winning_elevens"
 end
