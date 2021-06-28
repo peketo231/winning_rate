@@ -3,6 +3,7 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
+    compare: '比較'
   users:
     new:
       title: '新規登録'
