@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get 'mypage', to: 'users#show'
   resources :users, only: %i[new create]
+
+  get 'battle_records/:name', to: 'battle_records#new'
 end
