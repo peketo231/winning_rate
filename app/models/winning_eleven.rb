@@ -4,4 +4,6 @@ class WinningEleven < ApplicationRecord
 
   validates :series_status, presence: true
   validates :title, presence: true
+
+  enum series_status: { past: 0, current: 1 }
 end
