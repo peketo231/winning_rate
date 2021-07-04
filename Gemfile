@@ -32,6 +32,12 @@ gem 'sorcery'
 
 gem 'rails-i18n', '~> 6.0.0'
 
+gem 'rails_admin', '~> 2.0'
+
+gem 'cancancan'
+
+gem 'seed-fu'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
