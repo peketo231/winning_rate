@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <%= form_with model: @battle_record, local: true do |f| %>
-                <div class="form-group">
+                <div class="form-group d-inline-flex flex-column">
                     <%= f.label :title %>
                     <%= f.collection_select :winning_eleven_id, WinningEleven.current, :id, :title %>
                 </div>
