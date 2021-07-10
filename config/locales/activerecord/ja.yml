@@ -2,8 +2,12 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
+      battle_record: '戦績'
     attributes:
       user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+      battle_record:
+        title: 'タイトル'
+        win_rate: '勝率' 
