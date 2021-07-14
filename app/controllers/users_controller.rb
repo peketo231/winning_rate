@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
-  def show; end
+  def show
+    @battle_record = current_user.battle_records
+    @data = @battle_record.joins(:winning_eleven).order(:title)
+  end
 
   def new
     @user = User.new
