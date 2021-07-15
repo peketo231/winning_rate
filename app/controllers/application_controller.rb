@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  before_action :require_login
+
+  private
+
   # Overwrite the method sorcery calls when it
   # detects a non-authenticated request.
   def not_authenticated

@@ -1,4 +1,10 @@
 <div class="text-center">
+    <% if @data.present? %>
+        <%= column_chart @data.pluck(:title, :rate), library: {title: {text: 'Rate'}} %>
+        <%= column_chart @data.pluck(:title, :win_rate), max: 100, suffix: "%", library: {title: {text: '勝率'}, plotOptions: {column: {dataLabels: {enabled: true, format: '{point.y:.1f}%'}}}} %>
+    <% else %>
+        <p><%= t('.no_result') %></p>
+    <% end %>
     <div class="d-inline-flex flex-column">
         <%=link_to '過去作の戦績を入力', {controller: "battle_records", action: "new", name: "past"}, class: 'btn btn-primary mb-4' %>
         <%= link_to '現在の戦績を入力', {controller: "battle_records", action: "new", name: "current"}, class: 'btn btn-primary' %>
