@@ -5,8 +5,6 @@ ja:
     logout: 'ログアウト'
     compare: '比較'
   users:
-    show:
-      no_result: '戦績が登録されていません'
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
