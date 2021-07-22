@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_052136) do
+ActiveRecord::Schema.define(version: 2021_07_20_061141) do
 
   create_table "battle_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "rate", null: false
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_06_30_052136) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_battle_records_on_user_id"
     t.index ["winning_eleven_id"], name: "index_battle_records_on_winning_eleven_id"
+  end
+
+  create_table "monthlies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "month", null: false
+    t.integer "rate", null: false
+    t.float "win_rate"
+    t.bigint "battle_record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["battle_record_id"], name: "index_monthlies_on_battle_record_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -42,4 +52,5 @@ ActiveRecord::Schema.define(version: 2021_06_30_052136) do
 
   add_foreign_key "battle_records", "users"
   add_foreign_key "battle_records", "winning_elevens"
+  add_foreign_key "monthlies", "battle_records"
 end
