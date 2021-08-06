@@ -12,7 +12,8 @@ class BattleRecord < ApplicationRecord
   end
 
   def past?
-    return unless winning_eleven_id.present?
+    current_user = BattleRecord.find_by(user_id: user_id, winning_eleven_id: winning_eleven_id)
+    return unless current_user.present? && winning_eleven_id.present?
 
     winning_eleven.series_status == 'past'
   end

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   get 'battle_records/:name', to: 'battle_records#new'
   resources :battle_records, only: %i[create]
+
+  resources :monthlies, only: %i[index]
 end
