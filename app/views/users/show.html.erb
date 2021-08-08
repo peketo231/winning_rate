@@ -8,10 +8,10 @@ var ctx = canvas.getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.distinct.pluck(:title).to_json.html_safe %>,
+        labels: <%= @data.to_json.html_safe %>,
         datasets: [{
             label: 'Rate',
-            data: <%= @data.order(created_at: :desc).pluck(:rate) %>
+            data: <%= @rate.flatten %>
         }]
     },
     options: {
@@ -39,10 +39,10 @@ var ctx1 = canvas1.getContext('2d');
 var myChart1 = new Chart(ctx1, {
     type: 'bar',
     data: {
-        labels: <%= @data.distinct.pluck(:title).to_json.html_safe %>,
+        labels: <%= @data.to_json.html_safe %>,
         datasets: [{
             label: '勝率',
-            data: <%= @data.order(created_at: :desc).pluck(:win_rate) %>
+            data: <%= @win_rate.flatten %>
         }]
     },
     options: {

@@ -7,10 +7,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.distinct.pluck(:month).map {|a|a.to_s + '月'}.to_json.html_safe %>,
+        labels: <%= @data.map {|d|d.to_s + '月'}.to_json.html_safe %>,
         datasets: [{
             label: 'Rate',
-            data: <%= @data.order(created_at: :desc).pluck(:rate) %>
+            data: <%= @data.map {|d|@month.where(month: d).order(created_at: :desc).limit(1).pluck(:rate)}.flatten %>
         }]
     },
     options: {
@@ -28,10 +28,10 @@ var ctx1 = document.getElementById('myChart1').getContext('2d');
 var myChart1 = new Chart(ctx1, {
     type: 'bar',
     data: {
-        labels: <%= @data.distinct.pluck(:month).map {|a|a.to_s + '月'}.to_json.html_safe %>,
+        labels: <%= @data.map {|d|d.to_s + '月'}.to_json.html_safe %>,
         datasets: [{
             label: '勝率',
-            data: <%= @data.order(created_at: :desc).pluck(:win_rate) %>
+            data: <%= @data.map {|d|@month.where(month: d).order(created_at: :desc).limit(1).pluck(:win_rate)}.flatten %>
         }]
     },
     options: {
