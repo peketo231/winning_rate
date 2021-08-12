@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th><%= WinningEleven.human_attribute_name(:title) %></th>
+            <th><%= BattleRecord.human_attribute_name(:rate) %></th>
+            <th><%= BattleRecord.human_attribute_name(:win_rate) %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @battle_records.each do |battle_record| %>
+            <% winning_eleven = WinningEleven.find(battle_record.winning_eleven_id) %>
+            <tr>
+                <td><%= winning_eleven.title %></td>
+                <td><%= battle_record.rate %></td>
+                <td><%= battle_record.win_rate %></td>
+                <td><%= link_to '削除', battle_record, method: :delete, data: { confirm: "#{winning_eleven.title}を削除します。よろしいですか？"}, class: 'btn btn-danger' %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
