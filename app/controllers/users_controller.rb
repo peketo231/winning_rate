@@ -2,8 +2,16 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def show
-    @battle_record = current_user.battle_records
-    @data = @battle_record.joins(:winning_eleven).order(:title)
+    @battle_record = current_user.battle_records.joins(:winning_eleven)
+    @data = @battle_record.order(:title).distinct.pluck(:title)
+    @rate = @data.map do |d|
+      @winning_eleven = WinningEleven.find_by(title: d)
+      @battle_record.where(winning_eleven_id: @winning_eleven).order(created_at: :desc).limit(1).pluck(:rate)
+    end
+    @win_rate = @data.map do |d|
+      @winning_eleven = WinningEleven.find_by(title: d)
+      @battle_record.where(winning_eleven_id: @winning_eleven).order(created_at: :desc).limit(1).pluck(:win_rate)
+    end
   end
 
   def new

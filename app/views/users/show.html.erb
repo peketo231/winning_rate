@@ -1,12 +1,74 @@
+<div style="margin: 0 auto; width: 500px">
+    <canvas id="myChart" height="300"></canvas>
+    <canvas id="myChart1" height="300"></canvas>
+</div>
+<script>
+var canvas = document.getElementById('myChart');
+var ctx = canvas.getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: <%= @data.to_json.html_safe %>,
+        datasets: [{
+            label: 'Rate',
+            data: <%= @rate.flatten %>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+canvas.onclick = function(evt) {
+    var activePoints = myChart.getElementsAtEvent(evt);
+    if (activePoints[0]) {
+        var chartData = activePoints[0]['_chart'].config.data;
+        var idx = activePoints[0]['_index'];
+        var label = chartData.labels[idx];
+        location.href = 'monthlies?label=' + label;
+    }
+};
+
+var canvas1 = document.getElementById('myChart1');
+var ctx1 = canvas1.getContext('2d');
+var myChart1 = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+        labels: <%= @data.to_json.html_safe %>,
+        datasets: [{
+            label: '勝率',
+            data: <%= @win_rate.flatten %>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 0,
+                    max: 100
+                }
+            }]
+        }
+    }
+});
+canvas1.onclick = function(evt) {
+    var activePoints = myChart1.getElementsAtEvent(evt);
+    if (activePoints[0]) {
+        var chartData1 = activePoints[0]['_chart'].config.data;
+        var idx1 = activePoints[0]['_index'];
+        var label1 = chartData1.labels[idx1];
+        location.href = 'monthlies?label=' + label1;
+    }
+};
+</script>
 <div class="text-center">
-    <% if @data.present? %>
-        <%= column_chart @data.pluck(:title, :rate), library: {title: {text: 'Rate'}} %>
-        <%= column_chart @data.pluck(:title, :win_rate), max: 100, suffix: "%", library: {title: {text: '勝率'}, plotOptions: {column: {dataLabels: {enabled: true, format: '{point.y:.1f}%'}}}} %>
-    <% else %>
-        <p><%= t('.no_result') %></p>
-    <% end %>
     <div class="d-inline-flex flex-column">
-        <%=link_to '過去作の戦績を入力', {controller: "battle_records", action: "new", name: "past"}, class: 'btn btn-primary mb-4' %>
+        <%= link_to '過去作の戦績を入力', {controller: "battle_records", action: "new", name: "past"}, class: 'btn btn-primary mb-4' %>
         <%= link_to '現在の戦績を入力', {controller: "battle_records", action: "new", name: "current"}, class: 'btn btn-primary' %>
     </div>
 </div>

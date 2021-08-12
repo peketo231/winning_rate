@@ -5,8 +5,6 @@ ja:
     logout: 'ログアウト'
     compare: '比較'
   users:
-    show:
-      no_result: '戦績が登録されていません'
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
@@ -15,3 +13,6 @@ ja:
       title: 'ログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
+  battle_records:
+    index:
+      title: '戦績一覧'
