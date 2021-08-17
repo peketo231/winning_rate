@@ -1,6 +1,7 @@
 ja:
   defaults:
     login: 'ログイン'
+    signup: '新規登録'
     register: '登録'
     logout: 'ログアウト'
     compare: '比較'
