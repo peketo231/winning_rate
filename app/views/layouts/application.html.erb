@@ -13,10 +13,12 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
+    <% unless request.path == login_path || request.path == new_user_path %>
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
     <% end %>
     <%= yield %>
     <%= render 'shared/footer' %>
