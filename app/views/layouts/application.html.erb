@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>WinningRate</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,8 +13,12 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
+    <% unless request.path == login_path || request.path == new_user_path %>
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
     <% end %>
     <%= yield %>
     <%= render 'shared/footer' %>
