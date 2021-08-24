@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>WinningRate</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <% unless request.path == login_path || request.path == new_user_path %>
+    <% unless controller.controller_name == 'users' && controller.action_name == 'new' || controller.controller_name == 'users' && controller.action_name == 'create' || controller.controller_name == 'user_sessions' %>
       <% if logged_in? %>
         <%= render 'shared/header' %>
       <% else %>

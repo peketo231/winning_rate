@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <%= form_with model: @battle_record, local: true do |f| %>
-                <div class="form-group d-inline-flex flex-column">
+                <div class="form-group">
                     <%= f.label :title, WinningEleven.human_attribute_name(:title) %>
-                    <%= f.collection_select :winning_eleven_id, WinningEleven.current, :id, :title %>
+                    <%= f.collection_select :winning_eleven_id, WinningEleven.current, :id, :title, {}, { class: "form-control" } %>
                 </div>
                 <div class="form-group">
                     <%= f.label :rate %>
@@ -14,6 +14,7 @@
                     <%= f.label :win_rate %>
                     <%= f.text_field :win_rate, class: 'form-control' %>
                 </div>
+                <%= f.hidden_field :name, value: params[:name] %>
                 <%= f.submit (t 'defaults.compare'), class: 'btn btn-primary' %>
             <% end %>
         </div>
