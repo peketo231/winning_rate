@@ -12,12 +12,10 @@
   </head>
 
   <body>
-    <% unless controller.controller_name == 'users' && controller.action_name == 'new' || controller.controller_name == 'users' && controller.action_name == 'create' || controller.controller_name == 'user_sessions' %>
-      <% if logged_in? %>
-        <%= render 'shared/header' %>
-      <% else %>
-        <%= render 'shared/before_login_header' %>
-      <% end %>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
     <% end %>
     <%= render 'shared/flash_message' %>
     <%= yield %>
