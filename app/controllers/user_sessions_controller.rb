@@ -8,6 +8,7 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_back_or_to mypage_path
     else
+      flash.now[:danger] = t('.fail')
       render :new
     end
   end

@@ -9,6 +9,8 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
       battle_record:
+        rate: 'Rate'
         win_rate: '勝率' 
+        winning_eleven_id: 'ウイニングイレブン'
       winning_eleven:
         title: 'タイトル'

@@ -1,11 +1,11 @@
 <div class="chart-wrapper mb-5">
-    <canvas id="myChart" height="300"></canvas>
-    <canvas id="myChart1" height="300"></canvas>
+    <canvas id="primaryChart" height="300"></canvas>
+    <canvas id="secondaryChart" height="300"></canvas>
 </div>
 <script>
-var canvas = document.getElementById('myChart');
+var canvas = document.getElementById('primaryChart');
 var ctx = canvas.getContext('2d');
-var myChart = new Chart(ctx, {
+var primaryChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: <%= @data.to_json.html_safe %>,
@@ -25,7 +25,7 @@ var myChart = new Chart(ctx, {
     }
 });
 canvas.onclick = function(evt) {
-    var activePoints = myChart.getElementsAtEvent(evt);
+    var activePoints = primaryChart.getElementsAtEvent(evt);
     if (activePoints[0]) {
         var chartData = activePoints[0]['_chart'].config.data;
         var idx = activePoints[0]['_index'];
@@ -34,9 +34,9 @@ canvas.onclick = function(evt) {
     }
 };
 
-var canvas1 = document.getElementById('myChart1');
-var ctx1 = canvas1.getContext('2d');
-var myChart1 = new Chart(ctx1, {
+var canvas = document.getElementById('secondaryChart');
+var ctx = canvas.getContext('2d');
+var secondaryChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: <%= @data.to_json.html_safe %>,
@@ -56,13 +56,13 @@ var myChart1 = new Chart(ctx1, {
         }
     }
 });
-canvas1.onclick = function(evt) {
-    var activePoints = myChart1.getElementsAtEvent(evt);
+canvas.onclick = function(evt) {
+    var activePoints = secondaryChart.getElementsAtEvent(evt);
     if (activePoints[0]) {
-        var chartData1 = activePoints[0]['_chart'].config.data;
-        var idx1 = activePoints[0]['_index'];
-        var label1 = chartData1.labels[idx1];
-        location.href = 'monthlies?label=' + label1;
+        var chartData = activePoints[0]['_chart'].config.data;
+        var idx = activePoints[0]['_index'];
+        var label = chartData.labels[idx];
+        location.href = 'monthlies?label=' + label;
     }
 };
 </script>

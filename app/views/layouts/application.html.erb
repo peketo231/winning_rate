@@ -2,24 +2,22 @@
 <html>
   <head>
     <title>WinningRate</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   </head>
 
   <body>
-    <% unless request.path == login_path || request.path == new_user_path %>
-      <% if logged_in? %>
-        <%= render 'shared/header' %>
-      <% else %>
-        <%= render 'shared/before_login_header' %>
-      <% end %>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
     <% end %>
+    <%= render 'shared/flash_message' %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

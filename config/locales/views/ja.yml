@@ -14,6 +14,8 @@ ja:
       title: 'ログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
+    create:
+      fail: 'メールアドレスまたはパスワードが違います'
   battle_records:
     index:
       title: '戦績一覧'

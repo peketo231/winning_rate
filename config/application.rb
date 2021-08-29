@@ -41,5 +41,17 @@ module WinningRate
 
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
+
+    config.action_view.field_error_proc = proc do |html_tag, instance|
+      if instance.is_a?(ActionView::Helpers::Tags::Label)
+        html_tag.html_safe
+      else
+        object_name = instance.instance_variable_get(:@object_name)
+        method_name = instance.instance_variable_get(:@method_name)
+        error_icon = html_tag.gsub('form-control', 'form-control is-invalid').html_safe
+        error_message = "<div class=\"invalid-feedback\">#{I18n.t("activerecord.attributes.#{object_name}.#{method_name}")}#{instance.error_message.first}</div>".html_safe
+        error_icon.concat(error_message)
+      end
+    end
   end
 end

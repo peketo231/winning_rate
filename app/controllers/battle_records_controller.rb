@@ -11,14 +11,17 @@ class BattleRecordsController < ApplicationController
 
   def create
     @battle_record = current_user.battle_records.build(battle_record_params)
-    @battle_record.save!
     @winning_eleven = @battle_record.winning_eleven
-    if @winning_eleven.series_status == 'current'
-      @monthly = @battle_record.monthlies.build(monthly_battle_record_params)
-      @monthly.month = Date.today.month
-      @monthly.save
+    if @battle_record.save
+      if @winning_eleven.series_status == 'current'
+        @monthly = @battle_record.monthlies.build(monthly_battle_record_params)
+        @monthly.month = Date.today.month
+        @monthly.save
+      end
+      redirect_to mypage_path
+    else
+      render "battle_records/#{@winning_eleven.series_status}"
     end
-    redirect_to mypage_path
   end
 
   def destroy
