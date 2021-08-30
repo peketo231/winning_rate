@@ -8,7 +8,7 @@ var ctx = canvas.getContext('2d');
 var primaryChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.to_json.html_safe %>,
+        labels: <%= @data.map {|d|d[-4,4]}.to_json.html_safe %>,
         datasets: [{
             label: 'Rate',
             data: <%= @rate.flatten %>
@@ -39,7 +39,7 @@ var ctx = canvas.getContext('2d');
 var secondaryChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.to_json.html_safe %>,
+        labels: <%= @data.map {|d|d[-4,4]}.to_json.html_safe %>,
         datasets: [{
             label: '勝率',
             data: <%= @win_rate.flatten %>
