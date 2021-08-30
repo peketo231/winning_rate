@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_20_061141) do
+ActiveRecord::Schema.define(version: 2021_08_30_054504) do
 
   create_table "battle_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "rate", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_061141) do
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_winning_elevens_on_title", unique: true
   end
 
   add_foreign_key "battle_records", "users"
