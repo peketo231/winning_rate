@@ -1,10 +1,10 @@
 <div class="chart-wrapper">
-    <canvas id="myChart" height="300"></canvas>
-    <canvas id="myChart1" height="300"></canvas>
+    <canvas id="primaryChart" height="300"></canvas>
+    <canvas id="secondaryChart" height="300"></canvas>
 </div>
 <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById('primaryChart').getContext('2d');
+var primaryChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: <%= @data.map {|d|d.to_s + '月'}.to_json.html_safe %>,
@@ -24,8 +24,8 @@ var myChart = new Chart(ctx, {
     }
 });
 
-var ctx1 = document.getElementById('myChart1').getContext('2d');
-var myChart1 = new Chart(ctx1, {
+var ctx = document.getElementById('secondaryChart').getContext('2d');
+var secondaryChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: <%= @data.map {|d|d.to_s + '月'}.to_json.html_safe %>,
