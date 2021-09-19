@@ -5,6 +5,7 @@ ja:
     register: '登録'
     logout: 'ログアウト'
     compare: '比較'
+    password_reset: 'パスワードリセット'
   users:
     new:
       title: '新規登録'
@@ -19,3 +20,13 @@ ja:
   battle_records:
     index:
       title: '戦績一覧'
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: '送信'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'

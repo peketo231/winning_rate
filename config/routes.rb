@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root 'static_pages#top'
 
   get 'login', to: 'user_sessions#new'
@@ -13,4 +14,6 @@ Rails.application.routes.draw do
   resources :battle_records, only: %i[index create destroy]
 
   resources :monthlies, only: %i[index]
+
+  resources :password_resets, only: %i[new create edit update]
 end
