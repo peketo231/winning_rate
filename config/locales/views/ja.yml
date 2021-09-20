@@ -7,6 +7,8 @@ ja:
     compare: '比較'
     password_reset: 'パスワードリセット'
   users:
+    show:
+      title: 'マイページ'
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
@@ -20,6 +22,10 @@ ja:
   battle_records:
     index:
       title: '戦績一覧'
+    past:
+      title: '過去作の戦績入力'
+    current:
+      title: '現在の戦績入力'
   password_resets:
     new:
       title: パスワードリセット申請
