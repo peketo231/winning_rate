@@ -4,6 +4,22 @@
     <canvas id="secondaryChart" height="300"></canvas>
 </div>
 <script>
+Chart.plugins.register({
+    afterDraw: function(chart) {
+        if (chart.data.datasets[0].data.every(item => item === 0)) {
+            const ctx = chart.chart.ctx;
+            const width = chart.chart.width;
+            const height = chart.chart.height;
+            chart.clear();
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('データがありません', width / 2, height / 2);
+            ctx.restore();
+        }
+    }
+});
+
 var ctx = document.getElementById('primaryChart').getContext('2d');
 var primaryChart = new Chart(ctx, {
     type: 'bar',
