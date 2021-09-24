@@ -1,9 +1,4 @@
 class BattleRecordsController < ApplicationController
-  def index
-    @winning_elevens = WinningEleven.where(series_status: 'past').order(:title)
-    @battle_records = @winning_elevens.map { |winning_eleven| current_user.battle_records.where(winning_eleven_id: winning_eleven).order(created_at: :desc).limit(1) }.flatten
-  end
-
   def new
     @battle_record = BattleRecord.new
     render "battle_records/#{params[:name]}"

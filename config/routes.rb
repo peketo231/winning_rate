@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
 
   get 'battle_records/:name', to: 'battle_records#new'
-  resources :battle_records, only: %i[index create destroy]
+  resources :battle_records, only: %i[create destroy]
 
   resources :monthlies, only: %i[index]
 
