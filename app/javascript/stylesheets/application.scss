@@ -3,21 +3,20 @@
 
 body {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     min-height: 100vh;
 }
 
-footer {
-    margin-top: auto;
-    text-align: center;
+main {
+    flex: 1;
 }
 
 .chart-wrapper {
     margin: 0 auto;
-    width: 500px;
+    width: 425px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 425px) {
     .chart-wrapper {
         width: 100%;
     }
