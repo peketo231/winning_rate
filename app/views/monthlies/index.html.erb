@@ -48,7 +48,7 @@ var secondaryChart = new Chart(ctx, {
         labels: <%= @data.map {|d|d.to_s + '月'}.to_json.html_safe %>,
         datasets: [{
             label: '勝率',
-            data: <%= @data.map {|d|@month.where(month: d).order(created_at: :desc).limit(1).pluck(:win_rate)}.flatten %>
+            data: <%= @data.map {|d|@month.where(month: d).order(created_at: :desc).limit(1).pluck(:win_rate)}.flatten.compact %>
         }]
     },
     options: {

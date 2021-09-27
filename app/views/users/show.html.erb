@@ -59,7 +59,7 @@ var secondaryChart = new Chart(ctx, {
         labels: <%= @data.map {|d|d[-4,4]}.to_json.html_safe %>,
         datasets: [{
             label: '勝率',
-            data: <%= @win_rate.flatten %>
+            data: <%= @win_rate.flatten.compact %>
         }]
     },
     options: {
