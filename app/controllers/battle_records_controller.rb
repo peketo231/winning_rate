@@ -13,7 +13,7 @@ class BattleRecordsController < ApplicationController
         @monthly.month = Date.today.month
         @monthly.save
       end
-      redirect_to mypage_path
+      redirect_to mypage_path, success: t('.success')
     else
       render "battle_records/#{@winning_eleven.series_status}"
     end
