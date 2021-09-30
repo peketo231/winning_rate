@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WinningRate</title>
+    <title><%= page_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -18,7 +18,9 @@
       <%= render 'shared/before_login_header' %>
     <% end %>
     <%= render 'shared/flash_message' %>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
     <%= render 'shared/footer' %>
   </body>
 </html>

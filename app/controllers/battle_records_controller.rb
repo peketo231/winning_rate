@@ -1,9 +1,4 @@
 class BattleRecordsController < ApplicationController
-  def index
-    @winning_elevens = WinningEleven.where(series_status: 'past').order(:title)
-    @battle_records = @winning_elevens.map { |winning_eleven| current_user.battle_records.where(winning_eleven_id: winning_eleven).order(created_at: :desc).limit(1) }.flatten
-  end
-
   def new
     @battle_record = BattleRecord.new
     render "battle_records/#{params[:name]}"
@@ -18,7 +13,7 @@ class BattleRecordsController < ApplicationController
         @monthly.month = Date.today.month
         @monthly.save
       end
-      redirect_to mypage_path
+      redirect_to mypage_path, success: t('.success')
     else
       render "battle_records/#{@winning_eleven.series_status}"
     end

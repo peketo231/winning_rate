@@ -4,25 +4,41 @@ ja:
     signup: '新規登録'
     register: '登録'
     logout: 'ログアウト'
-    compare: '比較'
     password_reset: 'パスワードリセット'
+    message:
+      require_login: 'ログインしてください'
+      logged_in: 'ログインしています'
+      not_authorized: '権限がありません'
   users:
+    show:
+      title: 'マイページ'
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
+    create:
+      success: '登録が完了しました'
   user_sessions:
     new:
       title: 'ログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
     create:
+      success: 'ログインしました'
       fail: 'メールアドレスまたはパスワードが違います'
+    destroy:
+      success: 'ログアウトしました'
   battle_records:
     index:
       title: '戦績一覧'
+    past:
+      title: '過去作の戦績入力'
+    current:
+      title: '現在の戦績入力'
+    create:
+      success: '戦績を登録しました'
   password_resets:
     new:
-      title: パスワードリセット申請
+      title: 'パスワードリセット申請'
       submit: '送信'
     edit:
       title: 'パスワードリセット'

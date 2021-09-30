@@ -2,13 +2,13 @@ class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def new
-    redirect_to root_path if logged_in?
+    redirect_to root_path, warning: t('defaults.message.logged_in') if logged_in?
   end
 
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to mypage_path
+      redirect_back_or_to mypage_path, success: t('.success')
     else
       flash.now[:danger] = t('.fail')
       render :new
@@ -17,6 +17,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_path
+    redirect_to root_path, success: t('.success')
   end
 end

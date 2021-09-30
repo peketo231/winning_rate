@@ -15,14 +15,14 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to root_path if logged_in?
+    redirect_to root_path, warning: t('defaults.message.logged_in') if logged_in?
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path
+      redirect_to mypage_path, success: t('.success')
     else
       render :new
     end
