@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   get 'mypage', to: 'users#show'
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create edit update destroy]
 
   get 'battle_records/:name', to: 'battle_records#new'
   resources :battle_records, only: %i[create destroy]
