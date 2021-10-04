@@ -10,7 +10,7 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
       battle_record:
-        rate: 'Rate'
+        rate: 'Rating'
         win_rate: '勝率' 
       winning_eleven:
         title: 'タイトル'
