@@ -1,7 +1,7 @@
 <% content_for(:title, t('.title')) %>
 <div class="chart-wrapper mb-5">
-    <canvas id="primaryChart" height="300"></canvas>
-    <canvas id="secondaryChart" height="300"></canvas>
+    <canvas id="rateChart" height="300"></canvas>
+    <canvas id="winRateChart" height="300"></canvas>
 </div>
 <script>
 Chart.plugins.register({
@@ -20,15 +20,15 @@ Chart.plugins.register({
     }
 });
 
-var canvas = document.getElementById('primaryChart');
+var canvas = document.getElementById('rateChart');
 var ctx = canvas.getContext('2d');
-var primaryChart = new Chart(ctx, {
+var rateChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.map {|d|d[-4,4]}.to_json.html_safe %>,
+        labels: <%= @title.map {|t|t[-4,4]}.to_json.html_safe %>,
         datasets: [{
             label: 'Rate',
-            data: <%= @rate.flatten %>
+            data: <%= @battle_record.where(winning_eleven_id: @winning_eleven).order(created_at: :desc).limit(1).pluck(:rate) %>
         }]
     },
     options: {
@@ -42,24 +42,24 @@ var primaryChart = new Chart(ctx, {
     }
 });
 canvas.onclick = function(evt) {
-    var activePoints = primaryChart.getElementsAtEvent(evt);
+    const activePoints = rateChart.getElementsAtEvent(evt);
     if (activePoints[0]) {
         const chartData = activePoints[0]['_chart'].config.data;
         const idx = activePoints[0]['_index'];
         const label = chartData.labels[idx];
-        location.href = 'monthlies?label=' + label;
+        location.href = 'monthly?label=' + label;
     }
 };
 
-var canvas = document.getElementById('secondaryChart');
+var canvas = document.getElementById('winRateChart');
 var ctx = canvas.getContext('2d');
-var secondaryChart = new Chart(ctx, {
+var winRateChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.map {|d|d[-4,4]}.to_json.html_safe %>,
+        labels: <%= @title.map {|t|t[-4,4]}.to_json.html_safe %>,
         datasets: [{
             label: '勝率',
-            data: <%= @win_rate.flatten.compact %>
+            data: <%= @battle_record.where(winning_eleven_id: @winning_eleven).order(created_at: :desc).limit(1).pluck(:win_rate).compact %>
         }]
     },
     options: {
@@ -74,18 +74,15 @@ var secondaryChart = new Chart(ctx, {
     }
 });
 canvas.onclick = function(evt) {
-    var activePoints = secondaryChart.getElementsAtEvent(evt);
+    const activePoints = winRateChart.getElementsAtEvent(evt);
     if (activePoints[0]) {
         const chartData = activePoints[0]['_chart'].config.data;
         const idx = activePoints[0]['_index'];
         const label = chartData.labels[idx];
-        location.href = 'monthlies?label=' + label;
+        location.href = 'monthly?label=' + label;
     }
 };
 </script>
 <div class="text-center">
-    <div class="d-inline-flex flex-column">
-        <%#= link_to '過去作の戦績を入力', {controller: "battle_records", action: "new", name: "past"}, class: 'btn btn-secondary rounded-pill mb-4' %>
-        <%= link_to '現在の戦績を入力', {controller: "battle_records", action: "new", name: "current"}, class: 'btn btn-secondary rounded-pill' %>
-    </div>
+    <%= link_to '現在の戦績を入力', new_battle_record_path, class: 'btn btn-secondary rounded-pill' %>
 </div>

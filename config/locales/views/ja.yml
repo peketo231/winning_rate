@@ -11,8 +11,6 @@ ja:
       logged_in: 'ログインしています'
       not_authorized: '権限がありません'
   users:
-    show:
-      title: 'マイページ'
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
@@ -37,11 +35,9 @@ ja:
       success: 'ログアウトしました'
   battle_records:
     index:
-      title: '戦績一覧'
-    past:
-      title: '過去作の戦績入力'
-    current:
-      title: '現在の戦績入力'
+      title: 'マイページ'
+    new:
+      title: '戦績入力'
     create:
       success: '戦績を登録しました'
   password_resets:

@@ -1,0 +1,65 @@
+<% content_for(:title, @winning_eleven.title) %>
+<div class="chart-wrapper">
+    <canvas id="rateChart" height="300"></canvas>
+    <canvas id="winRateChart" height="300"></canvas>
+</div>
+<script>
+Chart.plugins.register({
+    afterDraw: function(chart) {
+        if (chart.data.datasets[0].data.every(item => item === 0)) {
+            const ctx = chart.chart.ctx;
+            const width = chart.chart.width;
+            const height = chart.chart.height;
+            chart.clear();
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('データがありません', width / 2, height / 2);
+            ctx.restore();
+        }
+    }
+});
+
+var ctx = document.getElementById('rateChart').getContext('2d');
+var rateChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: <%= @month.map {|m|m.to_s + '月'}.to_json.html_safe %>,
+        datasets: [{
+            label: 'Rate',
+            data: <%= @month.map {|m|@battle_record.where(month: m).order(created_at: :desc).limit(1).pluck(:rate)}.flatten %>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var ctx = document.getElementById('winRateChart').getContext('2d');
+var winRateChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: <%= @month.map {|m|m.to_s + '月'}.to_json.html_safe %>,
+        datasets: [{
+            label: '勝率',
+            data: <%= @month.map {|m|@battle_record.where(month: m).order(created_at: :desc).limit(1).pluck(:win_rate)}.flatten.compact %>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 0,
+                    max: 100
+                }
+            }]
+        }
+    }
+});
+</script>
