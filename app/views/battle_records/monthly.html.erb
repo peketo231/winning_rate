@@ -1,7 +1,7 @@
 <% content_for(:title, @winning_eleven.title) %>
 <div class="chart-wrapper">
-    <canvas id="primaryChart" height="300"></canvas>
-    <canvas id="secondaryChart" height="300"></canvas>
+    <canvas id="rateChart" height="300"></canvas>
+    <canvas id="winRateChart" height="300"></canvas>
 </div>
 <script>
 Chart.plugins.register({
@@ -20,14 +20,14 @@ Chart.plugins.register({
     }
 });
 
-var ctx = document.getElementById('primaryChart').getContext('2d');
-var primaryChart = new Chart(ctx, {
+var ctx = document.getElementById('rateChart').getContext('2d');
+var rateChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.map {|d|d.to_s + '月'}.to_json.html_safe %>,
+        labels: <%= @month.map {|m|m.to_s + '月'}.to_json.html_safe %>,
         datasets: [{
             label: 'Rate',
-            data: <%= @data.map {|d|@month.where(month: d).order(created_at: :desc).limit(1).pluck(:rate)}.flatten %>
+            data: <%= @month.map {|m|@battle_record.where(month: m).order(created_at: :desc).limit(1).pluck(:rate)}.flatten %>
         }]
     },
     options: {
@@ -41,14 +41,14 @@ var primaryChart = new Chart(ctx, {
     }
 });
 
-var ctx = document.getElementById('secondaryChart').getContext('2d');
-var secondaryChart = new Chart(ctx, {
+var ctx = document.getElementById('winRateChart').getContext('2d');
+var winRateChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <%= @data.map {|d|d.to_s + '月'}.to_json.html_safe %>,
+        labels: <%= @month.map {|m|m.to_s + '月'}.to_json.html_safe %>,
         datasets: [{
             label: '勝率',
-            data: <%= @data.map {|d|@month.where(month: d).order(created_at: :desc).limit(1).pluck(:win_rate)}.flatten.compact %>
+            data: <%= @month.map {|m|@battle_record.where(month: m).order(created_at: :desc).limit(1).pluck(:win_rate)}.flatten.compact %>
         }]
     },
     options: {

@@ -3,14 +3,15 @@ ja:
     models:
       user: 'ユーザー'
       battle_record: '戦績'
+      winning_eleven: 'ウイニングイレブン'
     attributes:
       user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
       battle_record:
-        rate: 'Rate'
+        rate: 'Rating'
         win_rate: '勝率' 
-        winning_eleven_id: 'ウイニングイレブン'
       winning_eleven:
         title: 'タイトル'
+        series_status: '状態'
