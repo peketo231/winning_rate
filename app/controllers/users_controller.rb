@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     redirect_to root_path, warning: t('defaults.message.logged_in') if logged_in?
   end
 
+  def show; end
+
   def create
     @user = User.new(user_params)
     if @user.save

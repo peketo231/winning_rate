@@ -2,9 +2,10 @@ ja:
   defaults:
     login: 'ログイン'
     signup: '新規登録'
-    register: '登録'
-    update: '更新'
     logout: 'ログアウト'
+    register: '登録'
+    edit: '編集'
+    update: '更新'
     password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
@@ -14,11 +15,13 @@ ja:
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
+    show:
+      title: 'ユーザー情報'
+      delete_account: '退会する'
     create:
       success: '登録が完了しました'
     edit:
-      title: '設定'
-      delete_account: '退会する'
+      title: 'ユーザー編集'
     update:
       success: '更新しました'
     destroy:
@@ -35,7 +38,7 @@ ja:
       success: 'ログアウトしました'
   battle_records:
     index:
-      title: 'マイページ'
+      title: 'マイレコード'
     new:
       title: '戦績入力'
     create:
