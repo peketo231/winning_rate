@@ -14,4 +14,4 @@ ja:
         win_rate: '勝率' 
       winning_eleven:
         title: 'タイトル'
-        series_status: '状態'
+        series_status: 'ステータス'

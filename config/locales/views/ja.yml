@@ -35,7 +35,7 @@ ja:
       success: 'ログアウトしました'
   battle_records:
     index:
-      title: 'マイページ'
+      title: 'マイレコード'
     new:
       title: '戦績入力'
     create:
