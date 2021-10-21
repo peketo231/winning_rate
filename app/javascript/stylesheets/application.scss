@@ -1,5 +1,6 @@
 @import 'top';
 @import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 body {
     display: flex;
@@ -46,4 +47,14 @@ footer {
 
 .or::after {
     margin-left: 1rem;
+}
+
+.btn-twitter {
+    color: #fff;
+    background-color: #1da1f2;
+}
+
+.btn-twitter:hover {
+    color: #fff;
+    opacity: 0.9;
 }
