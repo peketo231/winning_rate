@@ -26,3 +26,24 @@ footer {
         width: 100%;
     }
 }
+
+.or {
+    display: flex;
+    align-items: center;
+    color: lightgray;
+}
+
+.or::before, .or::after {
+    content: '';
+    height: 1px;
+    background-color: lightgray;
+    flex-grow: 1;
+}
+
+.or::before {
+    margin-right: 1rem;
+}
+
+.or::after {
+    margin-left: 1rem;
+}

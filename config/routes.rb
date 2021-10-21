@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :battle_records, only: %i[index new create]
 
   resources :password_resets, only: %i[new create edit update]
+
+  post 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
 end
