@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-  resources :users, only: %i[new show create edit update destroy]
+  resources :users, only: %i[new create]
 
   get 'monthly', to: 'battle_records#monthly'
   resources :battle_records, only: %i[index new create]
