@@ -2,7 +2,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-            <h2 class="text-center my-5"><%= t '.title' %></h2>
+            <h5 class="text-center mt-5">Twitterで登録</h5>
+            <div class="text-center mt-4">
+                <%= link_to auth_at_provider_path(provider: :twitter), class: 'btn btn-twitter' do %>
+                    <i class="fab fa-twitter"></i>
+                    Twitterで登録
+                <% end %>
+            </div>
+            <p class="or mt-5">または</p>
+            <h5 class="text-center my-5">メールアドレスで登録</h5>
             <%= form_with model: @user, local: true do |f| %>
                 <div class="form-group">
                     <%= f.label :email %>

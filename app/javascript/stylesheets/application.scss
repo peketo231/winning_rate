@@ -1,5 +1,6 @@
 @import 'top';
 @import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 body {
     display: flex;
@@ -25,4 +26,35 @@ footer {
     .chart-wrapper {
         width: 100%;
     }
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    color: lightgray;
+}
+
+.or::before, .or::after {
+    content: '';
+    height: 1px;
+    background-color: lightgray;
+    flex-grow: 1;
+}
+
+.or::before {
+    margin-right: 1rem;
+}
+
+.or::after {
+    margin-left: 1rem;
+}
+
+.btn-twitter {
+    color: #fff;
+    background-color: #1da1f2;
+}
+
+.btn-twitter:hover {
+    color: #fff;
+    opacity: 0.9;
 }
