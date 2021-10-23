@@ -4,10 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Overwrite the method sorcery calls when it
-  # detects a non-authenticated request.
   def not_authenticated
-    # Make sure that we reference the route from the main app.
     redirect_to main_app.login_path, warning: t('defaults.message.require_login')
   end
 end
