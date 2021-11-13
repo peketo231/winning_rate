@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_10_17_150008) do
 
-  create_table "authentications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "authentications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_150008) do
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
-  create_table "battle_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "battle_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "rate", null: false
     t.float "win_rate"
     t.bigint "user_id", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_150008) do
     t.index ["winning_eleven_id"], name: "index_battle_records_on_winning_eleven_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_150008) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
-  create_table "winning_elevens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "winning_elevens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "series_status", default: 0, null: false
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
