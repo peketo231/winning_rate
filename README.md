@@ -6,6 +6,8 @@
 ### 登場人物
 - エンドユーザー
   - ウイニングイレブンユーザー
+- 管理者
+  - 新作が発売されたら更新する人
 
 ### ユーザーが抱える課題
 現在の勝率が前作と比較してどのくらい変動したのか一目見ただけでわかるようにしたい。
@@ -17,10 +19,10 @@
 勝率の変動を視覚的に表現するWebアプリケーション
 
 ### マーケット
-ウイニングイレブンを一年以上プレイしているユーザー
+ウイニングイレブンユーザー
 
 ## 画面遷移図
 https://www.figma.com/file/8Mq0dWcs91Oo1H65367K9N/Winning_Rate?node-id=0%3A1
 
 ## ER図
-https://i.gyazo.com/bb4c275b607b49351f04129511a1cd2c.png
+https://drive.google.com/file/d/1d31p2oJKtCuIhiCe9p6L5EduZdWYixsE/view?usp=sharing
