@@ -117,7 +117,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.twitter.key = Rails.application.credentials.dig(:twitter, :key)
   config.twitter.secret = Rails.application.credentials.dig(:twitter, :secret_key)
-  config.twitter.callback_url = Rails.env.production? ? 'https://werate.herokuapp.com/oauth/callback?provider=twitter' : 'http://localhost:3000/oauth/callback?provider=twitter'
+  config.twitter.callback_url = Rails.env.production? ? 'https://www.werate.jp/oauth/callback?provider=twitter' : 'http://localhost:3000/oauth/callback?provider=twitter'
   config.twitter.user_info_mapping = { email: 'screen_name' }
   #
   # config.facebook.key = ""
