@@ -12,6 +12,13 @@ main {
     flex: 1;
 }
 
+header {
+  .navbar-brand img {
+    width: 90px;
+    height: 30px;
+  }
+}
+
 footer {
     background-color: #f8f9fa;
     margin-top: 5rem;
