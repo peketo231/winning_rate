@@ -55,5 +55,7 @@ module WinningRate
         error_icon.concat(error_message)
       end
     end
+
+    config.assets.initialize_on_precompile = false
   end
 end
