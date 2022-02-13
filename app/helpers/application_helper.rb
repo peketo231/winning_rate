@@ -11,6 +11,7 @@ module ApplicationHelper
       description: 'ウイニングイレブンのRate変動を視覚的に表現するサービス',
       canonical: 'https://www.werate.jp',
       icon: [
+        { href: asset_pack_url('media/images/favicon.ico') },
         { href: asset_pack_url('media/images/icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
       ],
       og: {
