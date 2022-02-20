@@ -9,16 +9,19 @@ ja:
       require_login: 'ログインしてください'
       logged_in: 'ログインしています'
       not_authorized: '権限がありません'
+  static_pages:
+    terms:
+      title: '利用規約'
+    privacy:
+      title: 'プライバシーポリシー'
   users:
     new:
       title: '新規登録'
-      to_login_page: 'ログインページへ'
     create:
       success: '登録が完了しました'
   user_sessions:
     new:
       title: 'ログイン'
-      to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
     create:
       success: 'ログインしました'
